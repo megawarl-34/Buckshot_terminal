@@ -3,12 +3,12 @@ import random
 joueur_actuel = 1
 
 def charger_revolver():
-    chargeur = [1, 0, 0, 0, 0, 0,] #Taille de la list = nombre de balle total. 0 = balle a blanc / 1 = vrai balle
-    random.shuffle(chargeur)
+    chargeur = [1, 1, 0, 0, 0, 0, 0] # Taille de la list = nombre total de balle. 0 = balle a blanc / 1 = vrai balle
+    random.shuffle(chargeur) # randomise la list
     return chargeur
 
 def tirer(chargeur):
-    balle = chargeur.pop(0)
+    balle = chargeur.pop(0) # retire la 1° entitée de la list randomiser
     
     if balle == 1:
         print("BOOM ! \n")
@@ -23,7 +23,7 @@ while True:
     print(f"\n--- Tour du joueur {joueur_actuel} ---")
     
     cmd = input("Tape 'Tire' pour tirer, 'quit' pour quitter >").lower().strip()
-    if cmd in ("tire", "tirer"):
+    if cmd in ("tire", "tirer", "t", "T"): # commandes valide
         cible = input(f"Sur qui veux-tu tirer ? (1 ou 2) > ").strip()
         
         balle, chargeur = tirer(chargeur)
@@ -38,7 +38,7 @@ while True:
             else:
                 print(f"Le joueur {cible} est mort ! Le joueur {joueur_actuel} gagne ! \n")
             break
-    
+
         else:
             if cible == str(joueur_actuel):
                 print(f"Le joueur {joueur_actuel} a survécu et rejoue.")
@@ -49,7 +49,7 @@ while True:
                     joueur_actuel = 1
                 print(f"C'est maintenant au joueur {joueur_actuel} de jouer.")
         
-    elif cmd in ("quit", "q", "exit"):
+    elif cmd in ("quit", "q", "exit"): # commandes valide
         break
     
     else:
