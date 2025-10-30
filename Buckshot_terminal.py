@@ -3,7 +3,7 @@ import random
 joueur_actuel = 1
 
 def charger_revolver():
-    chargeur = [1, 1, 0, 0, 0, 0] #Nb total = nombre de balle. 0 = balle a blanc / 1 = vrai balle
+    chargeur = [1, 0, 0, 0, 0, 0,] #Taille de la list = nombre de balle total. 0 = balle a blanc / 1 = vrai balle
     random.shuffle(chargeur)
     return chargeur
 
@@ -11,10 +11,10 @@ def tirer(chargeur):
     balle = chargeur.pop(0)
     
     if balle == 1:
-        print("BOOM ! Tue est mort !")
+        print("BOOM ! \n")
         
     else:
-        print("*clic*... Tu a survécu. \n")
+        print("*clic*... *rien ne se passe* \n")
     return balle, chargeur
 
 chargeur = charger_revolver()
